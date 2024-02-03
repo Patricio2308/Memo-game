@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#area{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: repeat(4, 1fr); */
+    height: 100vh;
+}
+
+.box{
+    display: flex;
+    border-color: black;
+    border-style: solid;
+    width: auto;
+    background-color: aquamarine;
+    justify-content: center;
+    align-items: center;
+}
+.box:hover{
+    background-color: cadetblue;
+}
