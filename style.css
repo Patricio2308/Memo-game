@@ -15,6 +15,7 @@
     border-color: black;
     border-style: solid;
     width: auto;
+    
     background-color: aquamarine;
     justify-content: center;
     align-items: center;
@@ -22,3 +23,7 @@
 .box:hover{
     background-color: cadetblue;
 }
+
+/* .contentBox{
+    display: none;
+} */
