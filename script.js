@@ -1,10 +1,9 @@
 let area = document.getElementById('area');
 
 
-let max = 8
-let pairs = max * 2
+let cantcards = 8
+let pairs = cantcards * 2
 let board = new Array(pairs)
-let currentElement
 
 /* area.style.gridTemplateColumns = `repeat(${max}, 1fr)`;
 area.style.gridTemplateRows = `repeat(${max}, 1fr)`; */
@@ -74,15 +73,12 @@ function compare(sel1, sel2){
     if (sel1.textContent == sel2.textContent && sel2.textContent != '' && sel1.textContent != '' && sel1 != sel2){
         console.log('Iguales')
         
-        setInterval(() => { /* 
-        sel1.textContent = '';
-        sel2.textContent = ''; */
-        sel1.remove();
-        sel2.remove();
+        setInterval(() => { 
+            sel1.remove();
+            sel2.remove();
     }, 1000)
         resetValues();
-        //borrar el elemento hijo al anotar un par
-        
+
 
     } else if(sel1.textContent != sel2.textContent && sel2 != ''){
         console.log('Distintos')
@@ -99,24 +95,16 @@ box.forEach(element => {
 })
 });
 
+//generando una lista de valores
 
-    /* for (let i=0; i < matriz.length/2; i++){
-        let contador = 0
-        let pos = Math.round(Math.random() *matriz.length )
-        let valor = i
-        while(contador < 2 ){
-            if(matriz[pos].innerHTML == ""){
-                matriz[pos].innerHTML = valor
-                contador++
-            } else {
-                pos = Math.round(Math.random() *matriz.length )        
-            }
-            console.log(pos)
+let list = []
+
+for(let i=0; i < cantcards; i++){
+
+    for (let j = 0; j < 2; j++) {
+            randomIndex = Math.round(Math.random() * cantcards)
+            list.splice(randomIndex, 0, i); //splice(ind, cant, elementos)
         }
-    } */
-   
-/* 
-console.log(Math.round(Math.random() *matriz.length ) )
-matriz.forEach(element => {
-    console.log(element.innerHTML)
-}); */
+
+    }
+    
