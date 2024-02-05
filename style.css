@@ -24,6 +24,6 @@
     background-color: cadetblue;
 }
 
-/* .contentBox{
-    display: none;
-} */
+.contentBox{
+    visibility: hidden;
+}
