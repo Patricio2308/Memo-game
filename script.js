@@ -6,8 +6,19 @@ let pairs = cantcards * 2
 let board = new Array(pairs)
 let randomIndex
 
-/* area.style.gridTemplateColumns = `repeat(${max}, 1fr)`;
-area.style.gridTemplateRows = `repeat(${max}, 1fr)`; */
+let medidas = {
+    5:5,
+    8:4,
+    10:5,
+    12:6,
+    14:7
+}
+
+    area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
+ /* else {
+    area.style.gridTemplateColumns = `repeat(${5}, 1fr)`;
+} */
+/* area.style.gridTemplateRows = `repeat(${cantcards/2}, 3fr)`; */
 
 //api https://picsum.photos/id/${numId}/200/300
 
@@ -32,6 +43,7 @@ function crearElemento(img,pos){
     innerElement.className = 'contentBox'
     innerElement.id = pos
     innerElement.setAttribute('src', img)
+    innerElement.setAttribute('alt',`No cargó la imagen (ㆆ_ㆆ)`)
     return element
 }
 
