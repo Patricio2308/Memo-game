@@ -3,20 +3,25 @@
     margin: 0;
 }
 
+#game {
+    display: flex;
+}
 #area{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 100vh;
+    height: 100vh; 
     width: 80%;
+    border-right: 1px solid black;
 }
 
 .box{
     display: flex;
+    border: 2px;
     border-color: black;
     border-style: solid;
     width: auto;
     
-    background-color: aquamarine;
+    background-color: hsl(160, 100%, 75%);
     justify-content: center;
     align-items: center;
 }
@@ -26,4 +31,12 @@
 
 .contentBox{
     visibility: hidden;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 235, 235);
+    width: 20%;
 }

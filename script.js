@@ -1,10 +1,13 @@
 let area = document.getElementById('area');
-
+let sizes = document.getElementById('sizes')
+let reset = document.getElementById('reset')
 
 let cantcards = 8
 let pairs = cantcards * 2
-let board = new Array(pairs)
+let board
 let randomIndex
+let box
+let list
 
 let medidas = {
     5:5,
@@ -14,7 +17,7 @@ let medidas = {
     14:7
 }
 
-    area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
+area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
  /* else {
     area.style.gridTemplateColumns = `repeat(${5}, 1fr)`;
 } */
@@ -22,17 +25,18 @@ let medidas = {
 
 //api https://picsum.photos/id/${numId}/200/300
 
+
 //generando una lista de valores para las cards
+let cargandoPosiciones = () => {
+    list = []
 
-let list = []
-
-for (let i = 0; i < cantcards; i++) {
-
-    for (let j = 0; j < 2; j++) {
-        randomIndex = Math.round(Math.random() * cantcards)
-        list.splice(randomIndex, 0, i); //splice(ind, cant, elementos)
+    for (let i = 0; i < cantcards; i++) {
+        
+        for (let j = 0; j < 2; j++) {
+            randomIndex = Math.round(Math.random() * pairs)
+            list.splice(randomIndex, 0, i); //splice(ind, cant, elementos)
+        } 
     }
-
 }
 
 function crearElemento(img,pos){
@@ -48,13 +52,22 @@ function crearElemento(img,pos){
 }
 
 
-// se inicializan los valores de las cajas y se identifican las creadas en html
-for (let i = 0; i < board.length; i++) {
-    if (`https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200` != null){
-        board[i] = `https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200`
-        area.appendChild(crearElemento(board[i], list[i]))}
+let sizeTablero = () => {
+    board = new Array(pairs)
+    area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
 }
-var box = document.querySelectorAll('.box');
+
+// se inicializan los valores de las cajas y se identifican las creadas en html
+let cargandoTablero = () =>{
+    cargandoPosiciones();
+    sizeTablero();
+    for (let i = 0; i < board.length; i++) {
+        if (`https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200` != null){
+            board[i] = `https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200`
+            area.appendChild(crearElemento(board[i], list[i]))}
+        }
+    box = document.querySelectorAll('.box');
+}
 
 // generando logica de seleccion
 let sel1 = '';
@@ -64,10 +77,7 @@ let sel2 = '';
 let showCard = (card) => {
      
     card.style.visibility = 'visible'
-
 }
-
-
 
 function resetValues(){
     sel1 = '';
@@ -93,9 +103,7 @@ function compare(sel1, sel2){
             sel2.style.visibility = 'hidden'
             clearInterval(distinto)
         }, 1000)
-        
-        resetValues();
-        
+        resetValues(); 
     } 
     
 }
@@ -115,13 +123,34 @@ let selectCard = (card) =>{
         }
     }
 }
+
+cargandoTablero()
+
 box.forEach(element => {
     element.addEventListener('click', (e) => {
         /* console.log(e.target.firstChild) */
         
         selectCard(e.target.firstChild)
-})
+
+        
+    })
 });
 
+reset.addEventListener('click', () => { 
+    cantcards = sizes.value
+    pairs = cantcards * 2
+    
+    area.innerHTML = ''
+    cargandoTablero()
+
+    box.forEach(element => {
+        element.addEventListener('click', (e) => {
+        
+            selectCard(e.target.firstChild)
+
+        })
+    });
+    
+})
 
     
