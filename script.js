@@ -77,6 +77,8 @@ let sel2 = '';
 let showCard = (card) => {
      
     card.style.visibility = 'visible'
+    card.style.transition = 'transform 0.5s'
+    card.style.transform = 'rotateY(0deg)'
 }
 
 function resetValues(){
@@ -101,6 +103,8 @@ function compare(sel1, sel2){
         let distinto = setInterval(() => {
             sel1.style.visibility = 'hidden'
             sel2.style.visibility = 'hidden'
+            sel1.style.transform = 'rotateY(90deg)'
+            sel2.style.transform = 'rotateY(90deg)'
             clearInterval(distinto)
         }, 1000)
         resetValues(); 
