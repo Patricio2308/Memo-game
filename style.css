@@ -40,3 +40,26 @@
     background-color: rgb(235, 235, 235);
     width: 20%;
 }
+
+#reset{
+    width: 10rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 1.2rem;
+    box-shadow: 5px 7px black;
+}
+
+#reset:hover{
+    background-color: rgb(255, 255, 255);
+    transition: all 0.1s ease-in;
+}
+
+#reset:active{
+    transform: translateY(7px);
+    box-shadow: 0px 0px black;
+    transition: all 0.1s ease-in-out;
+}
+

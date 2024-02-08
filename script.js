@@ -152,5 +152,3 @@ reset.addEventListener('click', () => {
     });
     
 })
-
-    
