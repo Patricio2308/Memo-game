@@ -10,7 +10,6 @@ let box
 let list
 
 let medidas = {
-    5:5,
     8:4,
     10:5,
     12:6,
