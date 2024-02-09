@@ -2,6 +2,7 @@ let area = document.getElementById('area');
 let sizes = document.getElementById('sizes')
 let reset = document.getElementById('reset')
 
+
 let cantcards = 8
 let pairs = cantcards * 2
 let board
@@ -91,10 +92,12 @@ function compare(sel1, sel2){
         console.log('Iguales')
         
         let iguales = setInterval(() => { 
+            sel1.style.animation = 'acertado 0.3s'
+            sel2.style.animation = 'acertado 0.3s'
             sel1.disabled = true;
             sel2.disabled = true;
             clearInterval(iguales)
-        }, 2000)
+        }, 500)
         resetValues();
         
     } else if (sel1.id != sel2.id && sel2 != '' && sel1 != ''){
@@ -104,6 +107,7 @@ function compare(sel1, sel2){
             sel2.style.visibility = 'hidden'
             sel1.style.transform = 'rotateY(90deg)'
             sel2.style.transform = 'rotateY(90deg)'
+             
             clearInterval(distinto)
         }, 1000)
         resetValues(); 
@@ -155,3 +159,4 @@ reset.addEventListener('click', () => {
     });
     
 })
+

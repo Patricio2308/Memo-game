@@ -9,6 +9,7 @@
 #area{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+     
     height: 100vh; 
     width: 80%;
     border-right: 1px solid black;
@@ -29,12 +30,20 @@
     background-color: cadetblue;
 }
 
+
+
 /*Imagenes*/
 .contentBox{
     visibility: hidden;
     transform: rotateY(90deg);
+    border-radius: 0.5rem; 
 }
 
+@keyframes acertado {
+    0% {opacity: 0.5;}
+    50% {opacity: 1;}
+    100% {opacity: 0.5;}
+}
 
 #menu {
     display: flex;
@@ -75,6 +84,7 @@
     #area {
         height: 100vh;
         width: 100%;
+        overflow: hidden;
     }
 
     #menu {
@@ -93,18 +103,14 @@
 
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:1100px) {
      
     #area {
-        height: 60vh;
+        height: 85vh;
     }
     img {
-        width: 100px;
+        width: 120px;  
     }
 }
 
- @media screen and (max-width:900px) {
-    img {
-        width: 70px;
-        }
- }
+  
