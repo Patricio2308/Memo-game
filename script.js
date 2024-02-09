@@ -47,7 +47,11 @@ function crearElemento(img,pos){
     innerElement.className = 'contentBox'
     innerElement.id = pos
     innerElement.setAttribute('src', img)
-    innerElement.setAttribute('alt',`No cargó la imagen (ㆆ_ㆆ)`)
+    innerElement.setAttribute('alt',`No cargó la imagen`)
+    innerElement.addEventListener('error', () => {
+        img = 'https://picsum.photos/id/188/200/200';
+        innerElement.setAttribute('src', img)
+    })
     return element
 }
 
