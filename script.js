@@ -25,6 +25,10 @@ area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
 
 //api https://picsum.photos/id/${numId}/200/300
 
+//Conseguir un numero con un maximo como parametro
+let getRandomNumber = (max) => {
+    return Math.round(Math.random() * max)
+}
 
 //generando una lista de valores para las cards
 let cargandoPosiciones = () => {
@@ -33,11 +37,12 @@ let cargandoPosiciones = () => {
     for (let i = 0; i < cantcards; i++) {
         
         for (let j = 0; j < 2; j++) {
-            randomIndex = Math.round(Math.random() * pairs)
+            randomIndex = getRandomNumber(pairs)
             list.splice(randomIndex, 0, i); //splice(ind, cant, elementos)
         } 
     }
 }
+
 
 function crearElemento(img,pos){
     let element = document.createElement('div')
@@ -48,9 +53,10 @@ function crearElemento(img,pos){
     innerElement.id = pos
     innerElement.setAttribute('src', img)
     innerElement.setAttribute('alt',`No cargó la imagen`)
-    innerElement.addEventListener('error', () => {
-        img = 'https://picsum.photos/id/188/200/200';
-        innerElement.setAttribute('src', img)
+    innerElement.addEventListener('error', () => { //consigue otra imagen en caso de error (recursivo)
+        img = `https://picsum.photos/id/${pos * randomIndex + 11}/200/200`;
+        innerElement.setAttribute('src', img);
+        element = crearElemento(img, pos + 25)
     })
     return element
 }
@@ -66,10 +72,10 @@ let cargandoTablero = () =>{
     cargandoPosiciones();
     sizeTablero();
     for (let i = 0; i < board.length; i++) {
-        if (`https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200` != null){
-            board[i] = `https://picsum.photos/id/${list[i] * randomIndex + 300}/200/200`
-            area.appendChild(crearElemento(board[i], list[i]))}
-        }
+        board[i] = `https://picsum.photos/id/${list[i] * randomIndex + 10}/200/200`
+        area.appendChild(crearElemento(board[i], list[i]))
+    }
+       
     box = document.querySelectorAll('.box');
 }
 
@@ -77,9 +83,8 @@ let cargandoTablero = () =>{
 let sel1 = '';
 let sel2 = '';
 
-// se imprimen en pantalla
+// se imprimen en pantalla la carta
 let showCard = (card) => {
-     
     card.style.visibility = 'visible'
     card.style.transition = 'transform 0.5s'
     card.style.transform = 'rotateY(0deg)'
