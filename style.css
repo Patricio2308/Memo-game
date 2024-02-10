@@ -45,12 +45,26 @@
     100% {opacity: 0.5;}
 }
 
+
 #menu {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(235, 235, 235);
     width: 20%;
+}
+#menu-panel {
+    flex-direction: column;
+    row-gap: 0.5rem
+}
+#menu-panel-size{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: larger;
+}
+#menu-panel select {
+    height: 1.2rem;
 }
 
 #reset{
@@ -82,7 +96,7 @@
         width: 100%;
     }
     #area {
-        height: 100vh;
+        height: auto;
         width: 100%;
         overflow: hidden;
     }
@@ -91,12 +105,22 @@
         width: 100%;
         height: 10rem;
     }
+
 }
 
 @media screen and (max-width:1500px) {
     #game {
         width: 100vw;
     }
+    #menu-panel {
+        display: inline-flex;
+        flex-direction: row;
+        column-gap: 1rem;
+    }
+    #menu-panel select {
+        height: 1.1rem;
+    }
+ 
     img {
         width: 150px;
     }
@@ -104,10 +128,7 @@
 }
 
 @media screen and (max-width:1100px) {
-     
-    #area {
-        height: 85vh;
-    }
+
     img {
         width: 120px;  
     }
