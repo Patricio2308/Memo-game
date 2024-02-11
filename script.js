@@ -84,7 +84,6 @@ let cargandoTablero = () =>{
     messageArea = document.createElement('section');
     messageArea.id = 'message';
     area.appendChild(messageArea)
-    completedMessage()
 }
 
 // generando logica de seleccion
