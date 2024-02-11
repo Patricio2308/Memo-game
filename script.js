@@ -1,6 +1,7 @@
 let area = document.getElementById('area');
 let sizes = document.getElementById('sizes')
 let reset = document.getElementById('reset')
+let blur = document.getElementById('blur')
 
 
 let cantcards = 8
@@ -10,6 +11,7 @@ let randomIndex
 let box
 let list
 let completed
+let messageArea
 
 let medidas = {
     8:4,
@@ -44,7 +46,7 @@ let cargandoPosiciones = () => {
     }
 }
 
-
+//Crea una imagen
 function crearElemento(img,pos){
     let element = document.createElement('div')
     element.className = 'box'
@@ -62,7 +64,7 @@ function crearElemento(img,pos){
     return element
 }
 
-
+//crea el tamaño del tablero, según la configuración
 let sizeTablero = () => {
     board = new Array(pairs)
     area.style.gridTemplateColumns = `repeat(${medidas[cantcards]}, 1fr)`;
@@ -78,6 +80,11 @@ let cargandoTablero = () =>{
     }
        
     box = document.querySelectorAll('.box');
+
+    messageArea = document.createElement('section');
+    messageArea.id = 'message';
+    area.appendChild(messageArea)
+    completedMessage()
 }
 
 // generando logica de seleccion
@@ -95,11 +102,54 @@ function resetValues(){
     sel1 = '';
     sel2 = '';
 }
+//muestra mensaje de juego completado
+let completedMessage = () => {
+    let message = 'Completado';
+    let index = 0
+    blur.style.display = 'inline'
+    blur.style.opacity = 0.5
+ 
 
-let completado = () => {
+    var mostrarLetra = (i) => {
+        letra = document.createElement('div')
+        letra.id = 'letra'
+        letra.innerHTML = message[i]
+        messageArea.appendChild(letra) 
+        
+        if(i == message.length - 1){
+            clearInterval(mensaje)
+        }
+        messageArea.style.bottom = '50%'
+        messageArea.style.left = '50%'
+        messageArea.style.transform = 'translate(-50%, -50%)'
+   
+    }
+
+    mensaje = setInterval(() =>{
+        mostrarLetra(index);
+        index++;
+    },100)
+
+    //muestra momentaneamente un fondo translucido
+    let bluring = setInterval(() =>{
+        blur.style.opacity = 0
+        messageArea.innerHTML = ''
+        let quitarBlur = setInterval(() => {
+            blur.style.display = 'none'
+            clearInterval(quitarBlur)
+        },1000)
+        clearInterval(bluring)        
+    },4000)   
+    
+
+}
+/* completedMessage() */
+
+//verifica que si se completo el tablero
+let completedCheck = () => {
     completed = Array.from(box).every( (e) => e.firstChild.disabled)
     if(completed){
-        alert('completado')
+        completedMessage();
     }
     
 }
@@ -114,8 +164,8 @@ function compare(sel1, sel2){
             sel2.style.animation = 'acertado 0.3s'
             sel1.disabled = true;
             sel2.disabled = true;
-            completado()
             clearInterval(iguales)
+            completedCheck()
         }, 500)
         resetValues();
         
@@ -154,10 +204,8 @@ cargandoTablero()
 
 box.forEach(element => {
     element.addEventListener('click', (e) => {
-        /* console.log(e.target.firstChild) */
         
         selectCard(e.target.firstChild)
-
         
     })
 });
