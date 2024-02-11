@@ -9,6 +9,7 @@ let board
 let randomIndex
 let box
 let list
+let completed
 
 let medidas = {
     8:4,
@@ -95,6 +96,14 @@ function resetValues(){
     sel2 = '';
 }
 
+let completado = () => {
+    completed = Array.from(box).every( (e) => e.firstChild.disabled)
+    if(completed){
+        alert('completado')
+    }
+    
+}
+
 function compare(sel1, sel2){
     
     if (sel1.id == sel2.id && sel2.id != '' && sel1.id != '' && sel1 != sel2){
@@ -105,6 +114,7 @@ function compare(sel1, sel2){
             sel2.style.animation = 'acertado 0.3s'
             sel1.disabled = true;
             sel2.disabled = true;
+            completado()
             clearInterval(iguales)
         }, 500)
         resetValues();

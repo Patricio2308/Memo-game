@@ -31,13 +31,13 @@
 }
 
 
-
 /*Imagenes*/
 .contentBox{
     visibility: hidden;
     transform: rotateY(90deg);
     border-radius: 0.5rem; 
 }
+
 
 @keyframes acertado {
     0% {opacity: 0.5;}
@@ -55,9 +55,9 @@
 }
 #menu-panel {
     flex-direction: column;
-    row-gap: 0.5rem
+    row-gap: 0.5rem;
 }
-#menu-panel-size{
+#menu-panel-sizeSection{
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -97,8 +97,7 @@
     }
     #area {
         height: auto;
-        width: 100%;
-        overflow: hidden;
+        width: auto;
     }
 
     #menu {
@@ -109,9 +108,6 @@
 }
 
 @media screen and (max-width:1500px) {
-    #game {
-        width: 100vw;
-    }
     #menu-panel {
         display: inline-flex;
         flex-direction: row;
@@ -122,13 +118,12 @@
     }
  
     img {
-        width: 150px;
+        width: 145px;
     }
 
 }
 
 @media screen and (max-width:1100px) {
-
     img {
         width: 120px;  
     }
