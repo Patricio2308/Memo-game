@@ -153,7 +153,7 @@ let completedCheck = () => {
     
 }
 
-function compare(sel1, sel2){
+let compare = (sel1, sel2) => {
     
     if (sel1.id == sel2.id && sel2.id != '' && sel1.id != '' && sel1 != sel2){
         console.log('Iguales')

@@ -5,22 +5,27 @@
 
 #game {
     display: flex;
+    height: 100vh; 
 }
 #area{
     position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 100vh; 
-    width: 80%;
-    border-right: 1px solid black;
+    height: auto; 
+    width: auto;
+    margin: 0 auto;
+    border-left: 1px solid rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
 }
 
 .box{
     display: flex;
     border: 2px;
+    /* border-radius: 5px; */
     border-color: black;
     border-style: solid;
-    width: auto;
+    /* width: 95%;
+    height: 95%; */
     background-color: hsl(160, 100%, 75%);
     justify-content: center;
     align-items: center;
@@ -31,6 +36,10 @@
     background-color: cadetblue;
 }
 
+img {
+    height: auto;
+    width: 95%;
+}
 
 /*Imagenes*/
 .contentBox{
@@ -54,6 +63,7 @@
     background-color: rgb(235, 235, 235);
     width: 20%;
 }
+ 
 #menu-panel {
     display: flex;
     flex-direction: column;
@@ -132,27 +142,33 @@
 }
 
 
-@media screen and (max-width:1900px) {
+@media screen and (max-width:1500px) {
     #game {
         flex-direction: column;
         position: relative;
-        width: 100%;
-    }
-    #area {
         height: 100vh;
-        width: auto;
+         
+    } 
+
+    #area {
+        margin: auto;
+        max-height: 90%;
+        min-height: 70%;
     }
 
+    #menu {
+        position: absolute;
+        bottom: calc(-50vh );
+        width: 100%;
+        height: 100px;
+    }
+    
     #menu-panel {
         display: flex;
         flex-direction: row;
         column-gap: 1.5rem;
-        height: auto;
+        height: 100px;
         align-items: center;
-    }
-    #menu {
-        width: 100%;
-        height: 10rem;
     }
     #reset {
         height: auto;
@@ -166,16 +182,16 @@
         height: 1.1rem;
     }
  
-    img {
+   /*  img {
         width: 145px;
-    }
+    } */
 
 }
 
 @media screen and (max-width:1100px) {
-    img {
+    /* img {
         width: 120px;  
-    }
+    } */
 }
 
   
