@@ -13,11 +13,12 @@
     height: 100vh; 
     width: 80%;
     border-right: 1px solid black;
+    overflow: hidden;
 }
 
 .box{
     display: flex;
-    border: 2px;
+    border: 1.5px;
     border-color: black;
     border-style: solid;
     width: auto;
@@ -186,14 +187,14 @@
     }
 }
 
-@media screen and (max-height:800px) {
-    img {
-        width: 150px;  
-    }
-}
 @media screen and (max-height:600px) {
     img {
-        width: 100px;  
+        width: 130px;  
+    }
+}
+@media screen and (max-height:450px) {
+    img {
+        width: 90px;  
     }
 }
   
