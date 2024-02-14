@@ -2,6 +2,7 @@ let area = document.getElementById('area');
 let sizes = document.getElementById('sizes')
 let reset = document.getElementById('reset')
 let blur = document.getElementById('blur')
+let steps = document.getElementById('counter')
 
 
 let cantcards = 8
@@ -12,6 +13,7 @@ let box
 let list
 let completed
 let messageArea
+let stepsCounter = 0
 
 let medidas = {
     8:4,
@@ -74,6 +76,8 @@ let sizeTablero = () => {
 let cargandoTablero = () =>{
     cargandoPosiciones();
     sizeTablero();
+    steps.innerHTML = 0;
+    stepsCounter = 0;
     for (let i = 0; i < board.length; i++) {
         board[i] = `https://picsum.photos/id/${list[i] * randomIndex + 10}/200/200`
         area.appendChild(crearElemento(board[i], list[i]))
@@ -148,9 +152,15 @@ let completedMessage = () => {
 let completedCheck = () => {
     completed = Array.from(box).every( (e) => e.firstChild.disabled)
     if(completed){
+        stepsCounter = 0;
         completedMessage();
     }
     
+}
+
+let showSteps = () => {
+    stepsCounter++;
+    steps.innerHTML = stepsCounter;
 }
 
 function compare(sel1, sel2){
@@ -178,8 +188,9 @@ function compare(sel1, sel2){
              
             clearInterval(distinto)
         }, 1000)
-        resetValues(); 
+        resetValues();
     } 
+    showSteps();
     
 }
 
