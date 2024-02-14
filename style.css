@@ -186,4 +186,14 @@
     }
 }
 
+@media screen and (max-height:800px) {
+    img {
+        width: 150px;  
+    }
+}
+@media screen and (max-height:600px) {
+    img {
+        width: 100px;  
+    }
+}
   
