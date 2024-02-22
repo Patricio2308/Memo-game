@@ -18,7 +18,7 @@
 
 .box{
     display: flex;
-    border: 1.5px;
+    border: 1px;
     border-color: black;
     border-style: solid;
     width: auto;
@@ -86,6 +86,7 @@
 #reset{
     width: 10rem;
     cursor: pointer;
+    margin: 1em auto;
     font-weight: 500;
     font-family: sans-serif;
     padding: 0.5rem 1rem;
